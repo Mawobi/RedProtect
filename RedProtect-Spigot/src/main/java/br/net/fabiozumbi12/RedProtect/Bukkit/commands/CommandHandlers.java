@@ -454,14 +454,14 @@ public class CommandHandlers {
     public static void handleInfoTop(Player p) {
         Region r = RedProtect.get().getRegionManager().getTopRegion(p.getLocation());
         if (r == null) {
-            RedProtect.get().getLanguageManager().sendMessage(p, "cmdmanager.region.doesntexist");
+            RedProtect.get().getLanguageManager().sendMessage(p, "playerlistener.noregion.atblock");
             return;
         }
         Map<Integer, Region> groupr = RedProtect.get().getRegionManager().getGroupRegion(p.getLocation());
         if (RedProtect.get().getPermissionHandler().hasRegionPermAdmin(p, "info", r)) {
             p.sendMessage(RedProtect.get().getLanguageManager().get("general.color") + "--------------- [" + ChatColor.GOLD + r.getName() + RedProtect.get().getLanguageManager().get("general.color") + "] ---------------");
             p.sendMessage(r.info());
-            p.sendMessage(RedProtect.get().getLanguageManager().get("general.color") + "----------------------------------");
+            p.sendMessage(RedProtect.get().getLanguageManager().get("general.color") + "-----------------------------------------");
             if (groupr.size() > 1) {
                 p.sendMessage(RedProtect.get().getLanguageManager().get("cmdmanager.moreregions"));
                 for (Region regs : groupr.values()) {
@@ -492,7 +492,7 @@ public class CommandHandlers {
             }
             p.sendMessage(RedProtect.get().getLanguageManager().get("general.color") + "--------------- [" + ChatColor.GOLD + r.getName() + RedProtect.get().getLanguageManager().get("general.color") + "] ---------------");
             p.sendMessage(r.info());
-            p.sendMessage(RedProtect.get().getLanguageManager().get("general.color") + "----------------------------------");
+            p.sendMessage(RedProtect.get().getLanguageManager().get("general.color") + "-----------------------------------------");
         } else {
             RedProtect.get().getLanguageManager().sendMessage(p, "no.permission");
         }
